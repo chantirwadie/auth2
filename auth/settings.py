@@ -190,3 +190,7 @@ EXCLUSION_LIST = [
     '/api/v1/coordinateur/',
     '/api/v1/topManageur/'
 ]
+
+
+import django_heroku
+django_heroku.settings(locals())
