@@ -1,5 +1,7 @@
 from django.http import JsonResponse
 from rest_framework.views import APIView
+
+from auth.settings import API_GATE_WAY
 from .serializers import ProfesseurSerializer, Professeurs
 from core.serializers import UserSerializer
 from .models import Professeur
@@ -10,7 +12,7 @@ from rest_framework.pagination import PageNumberPagination
 from django.db.models import CharField
 from django.db.models import  Q
 from django.db.models import Prefetch
-
+from django.conf import settings
 import traceback
 from core.models import User
 import urllib3
@@ -45,7 +47,7 @@ class GestionProfesseur(APIView):
         if professeur:
             serializer = Professeurs(professeur)
             idDepartement = serializer.data['departement']
-            url = 'http://localhost:8000/api/v2/departement' 
+            url = settings.API_GATE_WAY+'/api/v2/departement' 
             final_url = '/'.join([url, str(idDepartement)])
             r = http.request('GET', final_url)
             data = json.loads(r.data)

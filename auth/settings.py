@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-vd$lj4b6j8u+r&wkw(salkl^tiabi1%k3_*2aea+a*26-@-b^)'
+SECRET_KEY = 'django-insecure-vd$lj4b6j8u+r&wkw(salkl^tiabi1%k3_*2aea+a*26-@-b^)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -121,8 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# import dj_database_url
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -153,12 +153,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.User'
 
 
-ALLOWED_HOSTS=['http://localhost:3000' , 'localhost', '127.0.0.1']
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-    'http://localhost:8002'
-)
+# ALLOWED_HOSTS=['http://localhost:3000' , 'localhost', '127.0.0.1']
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:3000',
+#     'http://localhost:8002'
+# )
+API_GATE_WAY ='https://apigateway-pfa.herokuapp.com'
 
 FRONTEND_URL = "http://localhost:3000"
 EMAIL_BACKEND_URL = "http://localhost:8003"
@@ -193,5 +194,5 @@ EXCLUSION_LIST = [
 ]
 
 
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
